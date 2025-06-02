@@ -23,6 +23,12 @@ class Calendar {
     // sacar el lunes de la primera semana
     $nuevaFecha = mktime(0,0,0,$montmonth,$daysmonth,$yearmonth);
     $diaDeLaSemana = date("w", $nuevaFecha);
+
+    //case diaDeLaSemana==0 (domingo) ej: 01Jun2025
+    if (!$diaDeLaSemana) {
+      $diaDeLaSemana=7;
+    }
+    
     $nuevaFecha = $nuevaFecha - ($diaDeLaSemana*24*3600); //Restar los segundos totales de los dias transcurridos de la semana
     $dateini = date ("Y-m-d",$nuevaFecha);
     //$dateini = date("Y-m-d",strtotime($dateini."+ 1 day"));
